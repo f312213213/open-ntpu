@@ -26,7 +26,17 @@ const verifyHandler = async (
     authorizationCode,
     clientId,
     clientSecret,
-  } = req.body
+  } = req.body// get user id from authorizationCode
+  let payload
+  try {
+    payload = getPayloadFromToken(
+      authorizationCode
+    )
+  } catch (e: any) {
+    return res
+      .status(400)
+      .json({ msg: e.message })
+  }
   // verify clientSecret match clientId
   const projectInfoSnapshot = await db.collection('app').doc(clientId).get()
 
@@ -42,18 +52,6 @@ const verifyHandler = async (
     return res
       .status(400)
       .json({ msg: 'Invalid client secret.' })
-  }
-
-  // get user id from authorizationCode
-  let payload
-  try {
-    payload = getPayloadFromToken(
-      authorizationCode
-    )
-  } catch (e: any) {
-    return res
-      .status(400)
-      .json({ msg: e.message })
   }
 
   if (!payload) {
