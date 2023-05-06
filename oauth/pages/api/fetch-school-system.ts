@@ -1,8 +1,8 @@
-import { EToken } from '@/constants/token'
-import { IAuthorizationCode, IUserDataInFirestore } from '@/interfaces/auth'
-import { IErrorReturn } from '@/interfaces/api'
-import { generateCommonToken } from '@/utils/auth'
-import admin, { db } from '@/lib/firebase'
+import { EToken } from '@/oauth/constants/token'
+import { IAuthorizationCode, IUserDataInFirestore } from '@/oauth/interfaces/auth'
+import { IErrorReturn } from '@/oauth/interfaces/api'
+import { generateCommonToken } from '@/oauth/utils/auth'
+import admin, { db } from '@/oauth/lib/firebase'
 import fetch from 'node-fetch'
 import type { NextApiRequest, NextApiResponse } from 'next'
 

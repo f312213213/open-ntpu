@@ -1,8 +1,8 @@
-import { EToken } from '@/constants/token'
-import { IAuthorizationCode } from '@/interfaces/auth'
-import { IErrorReturn } from '@/interfaces/api'
-import { db } from '@/lib/firebase'
-import { getPayloadFromToken } from '@/utils/auth'
+import { EToken } from '@/oauth/constants/token'
+import { IAuthorizationCode } from '@/oauth/interfaces/auth'
+import { IErrorReturn } from '@/oauth/interfaces/api'
+import { db } from '@/oauth/lib/firebase'
+import { getPayloadFromToken } from '@/oauth/utils/auth'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 interface Data {
