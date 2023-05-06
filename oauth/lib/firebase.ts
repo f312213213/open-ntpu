@@ -1,5 +1,5 @@
 import { getAuth } from 'firebase-admin/auth'
-import { getJwtFromAuthorizationHeader } from '@/utils/auth'
+import { getJwtFromAuthorizationHeader } from '@/oauth/utils/auth'
 import admin from 'firebase-admin'
 
 try {

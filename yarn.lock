@@ -2722,6 +2722,11 @@ lucide-react@^0.188.0:
   resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.188.0.tgz#de410cf0e50b73ff1e6fed289da627713977e13b"
   integrity sha512-c27NaQoiGp1Spz2NPcCjV1EFAOWICPq0Wq+uxyXUUAzgSC0jCMJCztcyZ5ABr2RO/ivd9ZEnFEldSX50ZYAKkQ==
 
+lucide-react@^0.211.0:
+  version "0.211.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.211.0.tgz#42a3c77da727402de9308712c2d4e63573047d0c"
+  integrity sha512-YRXK55KqWWcT1zPg89MWl2L6/dAFjaAcx5QQCdn1LS/DqHkZ83ibYu94CxYJpeq+/ZQrNMYhh/JF2BNKPDQo1g==
+
 markdown-it-anchor@^8.4.1:
   version "8.6.7"
   resolved "https://registry.yarnpkg.com/markdown-it-anchor/-/markdown-it-anchor-8.6.7.tgz#ee6926daf3ad1ed5e4e3968b1740eef1c6399634"
@@ -3295,7 +3300,7 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react@18.2.0:
+react@18.2.0, react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -3660,7 +3665,7 @@ tailwindcss-animate@^1.0.5:
   resolved "https://registry.yarnpkg.com/tailwindcss-animate/-/tailwindcss-animate-1.0.5.tgz#a6720e3b0616e1ff922b32846729881c626a069d"
   integrity sha512-UU3qrOJ4lFQABY+MVADmBm+0KW3xZyhMdRvejwtXqYOL7YjHYxmuREFAZdmVG5LPe5E9CAst846SLC4j5I3dcw==
 
-tailwindcss@3.3.2, tailwindcss@^3.3.1:
+tailwindcss@3.3.2, tailwindcss@^3.3.1, tailwindcss@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.3.2.tgz#2f9e35d715fdf0bbf674d90147a0684d7054a2d3"
   integrity sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==
@@ -3813,7 +3818,7 @@ typed-array-length@^1.0.4:
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
 
-typescript@5.0.4:
+typescript@5.0.4, typescript@^5.0.4:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
   integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==

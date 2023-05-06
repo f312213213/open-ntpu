@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "workspaces": [
     "oauth",
-    "register-app"
+    "register-app",
+    "components"
   ],
   "private": true,
   "scripts": {

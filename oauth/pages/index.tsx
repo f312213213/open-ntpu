@@ -1,5 +1,5 @@
-import { Button } from '@/oauth/components/Button'
-import { Card } from '@/oauth/components/Card'
+import { Button } from '@/components/Button'
+import { Card } from '@/components/Card'
 import { FormEvent, useRef } from 'react'
 import { GetServerSideProps } from 'next'
 import { db } from '@/oauth/lib/firebase'
@@ -71,7 +71,7 @@ const Home = ({ clientName }: {clientName: string}) => {
           <Form.Submit asChild>
             <div className={'w-full flex justify-center'}>
               <Form.Submit asChild>
-                <Button className={'bg-white text-black'}>
+                <Button className={'bg-white text-black hover:bg-gray-300 transform hover:scale-105 transition'}>
                   登入
                 </Button>
               </Form.Submit>
