@@ -1,4 +1,4 @@
-import { EToken } from '@/constants/token'
+import { EToken } from '@/oauth/constants/token'
 import { JwtPayload, sign, verify } from 'jsonwebtoken'
 import * as process from 'process'
 
