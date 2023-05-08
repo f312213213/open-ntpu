@@ -4,7 +4,8 @@
   "workspaces": [
     "oauth",
     "register-app",
-    "components"
+    "components",
+    "docs"
   ],
   "private": true,
   "scripts": {
