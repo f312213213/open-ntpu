@@ -5,7 +5,8 @@
     "oauth",
     "register-app",
     "components",
-    "docs"
+    "docs",
+    "www"
   ],
   "private": true,
   "scripts": {
