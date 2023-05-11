@@ -1,9 +1,9 @@
 {
-  "name": "ntpu-aouth",
+  "name": "open-ntpu",
   "version": "0.1.0",
   "workspaces": [
     "oauth",
-    "register-app",
+    "dashboard",
     "components",
     "docs",
     "www"
