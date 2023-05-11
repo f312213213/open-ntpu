@@ -50,7 +50,7 @@ export const getPayloadFromToken = (token: string) => {
   }) as IPayload
 }
 
-export const generateCommonToken = (userId: string, projectName: string, projectId: string, day: number, type: EToken) => {
+export const generateCommonToken = (userId: string, projectName = 'open-ntpu', projectId = 'open-ntpu', day: number, type: EToken) => {
   return sign(
     {
       userId,

@@ -1,13 +1,14 @@
 import { EToken } from '@/oauth/constants/token'
-import { IAuthorizationCode, IUserDataInFirestore } from '@/oauth/interfaces/auth'
+import { IAuthorizationCode } from '@/oauth/interfaces/auth'
 import { IErrorReturn } from '@/oauth/interfaces/api'
 import { generateCommonToken } from '@/oauth/utils/auth'
 import admin, { db } from '@/oauth/lib/firebase'
 import fetch from 'node-fetch'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-interface Data extends IUserDataInFirestore {
-  redirectUrl?: string
+export interface Data extends IAuthorizationCode {
+  redirectUrl: string
+  loginStateToken: string
 }
 
 interface IRequestBody extends NextApiRequest {
@@ -65,11 +66,20 @@ const loginRequestHandler = async (
         0.01,
         EToken.AUTH
       )
+
+      const loginStateToken = generateCommonToken(
+        username,
+        undefined,
+        undefined,
+        30,
+        EToken.LOGIN_STATE
+      )
       const redirectUrl = projectInfo?.redirectUrl
 
       return res
         .status(200)
         .json({
+          loginStateToken,
           authorizationCode,
           redirectUrl,
         })

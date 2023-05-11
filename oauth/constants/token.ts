@@ -1,5 +1,6 @@
 export enum EToken {
   'ACCESS',
   'REFRESH',
-  'AUTH'
+  'AUTH',
+  'LOGIN_STATE'
 }
