@@ -2,7 +2,6 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "cache": true,
       "outputs": [".next/**"]
     },
     "lint": {
