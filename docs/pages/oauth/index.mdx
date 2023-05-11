@@ -1,1 +1,93 @@
-# NTPU OAuth
+# Using NTPU OAuth
+
+We use the [OAuth 2.0 protocol](https://datatracker.ietf.org/doc/html/rfc6749) for authentication and authorization.
+For now, we only supports OAuth 2.0 scenarios for web server.
+
+To begin, obtain OAuth 2.0 client credentials from the Open NTPU register app page. Then your client application requests an access token from our server, extracts a token from the response, and sends the token to the Open NTPU API that you want to access.
+
+This page gives an overview of the OAuth 2.0 authorization scenarios we supported.
+
+## Basic steps
+
+All applications follow a basic pattern when accessing our API using OAuth 2.0. At a high level, you follow five steps:
+
+1. Register your app at our server.
+2. App redirect user to our login view.
+3. User confirm login and authorization the app.
+4. App exchange the access token from our exchange endpoint.
+5. App access user's data from our API with the token we provide.
+
+Lets take a deep dive into it.
+
+### 1. Register your app at our server.
+
+Go to `https://dash.oauth.ntpu.xyz/` to register your application in Open NTPU system.
+
+After completion, you will get a set of token, including client id and client secret(keep client secret securely), you will need to use them in the following steps.
+
+### 2. Your app send user to our login view.
+
+Send user to `https://oauth.ntpu.xyz/?clientId={your client id}`.
+
+### 3. User confirm login and authorization your app.
+
+In this step, the user decides whether to grant your application the requested access. At this stage, we display a consent window that shows the name of your application. The user can then consent to grant access to one or more scopes requested by your application or refuse the request.
+
+Your application doesn't need to do anything at this stage as it waits for the response from our OAuth 2.0 server indicating whether any access was granted. That response is explained in the following step.
+
+### 4. Your app exchange the access token from our exchange endpoint.
+
+The OAuth 2.0 server responds to your application's access request by using the URL specified in the request.
+
+If the user approves the access request, then the response contains an authorization code. If the user does not approve the request, the response contains an error message. The authorization code or error message that is returned to the web server appears on the query string, as shown below:
+
+An error response:
+```
+{your redirect endpoint}?error=access_denied
+```
+
+An authorization code response:
+```
+{your redirect endpoint}?authorizationCode=ey...
+```
+
+After you get the authorization code, you will need to exchange this authorization code to an access token at your own backend service within 1 minute.
+
+To exchange an authorization code for an access token, call the https://oauth.ntpu.xyz/api/exchange endpoint and set the following parameters:
+| Field             | Description                |
+|-------------------|----------------------------|
+| authorizationCode | The code get from response |
+| clientId          | Your client id             |
+| clientSecret      | Your client secret         |
+
+The following snippet shows a sample request:
+
+
+```
+POST /api/exchange HTTP/1.1
+Host: oauth.ntpu.xyz
+Content-Type: application/json
+authorizationCode=ey....&
+client_id=your_client_id&
+client_secret=your_client_secret
+```
+
+We then responds to this request by returning a JSON object that contains a short-lived access token and a refresh token.
+
+```
+{
+  "access_token": "ey...",
+  "refresh_token": "ey..."
+}
+```
+### 5. Your  app access user's data from our API with the token we provide.
+
+After your application obtains an access token, you can use the token to make calls to our API on behalf of a given user data. To do this, include the access token in a request to the API by including an Authorization HTTP header Bearer value.
+
+HTTP GET examples
+A call to the user info endpoint using the Authorization: Bearer HTTP header might look like the following. Note that you need to specify your own access token:
+```
+GET /api/user/info HTTP/1.1
+Host: oauth.ntpu.xyz
+Authorization: Bearer accessToken
+```
