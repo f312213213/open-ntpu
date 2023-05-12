@@ -80,12 +80,12 @@ const Home = ({ clientName, username, isLogin }: IPageProps) => {
       <Head>
         <title>登入 | Open NTPU</title>
       </Head>
-      <div className={'w-full h-screen flex justify-center items-center bg-gray-950'}>
+      <div className={'w-full h-screen flex justify-center items-center bg-[#171717]'}>
         <Card className={'overflow-hidden'}>
           {
             isLogin
               ? (
-                <div className={'w-[500px] bg-gray-600 p-10 rounded'}>
+                <div className={'w-[500px] bg-[#171717] p-10 rounded'}>
                   <h1 className={'text-white font-bold text-center text-2xl my-10'}>
                     hi {username}
                   </h1>
@@ -100,7 +100,7 @@ const Home = ({ clientName, username, isLogin }: IPageProps) => {
                 </div>
                 )
               : (
-                <Form.Root className={'w-[500px] bg-gray-600 p-10 rounded'} ref={formRef} onSubmit={fetchLogin}>
+                <Form.Root className={'w-[500px] bg-[#171717] p-10 rounded'} ref={formRef} onSubmit={fetchLogin}>
                   <h1 className={'text-white font-bold text-center text-2xl my-10'}>
                     您確定要在 {clientName} 內登入嗎？
                   </h1>
