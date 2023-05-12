@@ -65,7 +65,7 @@ const verifyHandler = async (
     payload.userId,
     projectInfo?.clientName,
     projectInfo?.clientId,
-    3,
+    1,
     EToken.ACCESS
   )
   const refreshToken = generateCommonToken(

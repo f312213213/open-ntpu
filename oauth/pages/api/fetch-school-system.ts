@@ -1,10 +1,12 @@
 import { EToken } from '@/oauth/constants/token'
 import { IAuthorizationCode } from '@/oauth/interfaces/auth'
 import { IErrorReturn } from '@/oauth/interfaces/api'
+import { firestore } from 'firebase-admin'
 import { generateCommonToken } from '@/oauth/utils/auth'
 import admin, { db } from '@/oauth/lib/firebase'
 import fetch from 'node-fetch'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import FieldValue = firestore.FieldValue;
 
 export interface Data extends IAuthorizationCode {
   redirectUrl: string
@@ -75,6 +77,12 @@ const loginRequestHandler = async (
         EToken.LOGIN_STATE
       )
       const redirectUrl = projectInfo?.redirectUrl
+
+      const userRef = await db.collection('user').doc(username)
+
+      userRef.update({
+        granted: FieldValue.arrayUnion(projectInfoSnapshot.ref),
+      })
 
       return res
         .status(200)

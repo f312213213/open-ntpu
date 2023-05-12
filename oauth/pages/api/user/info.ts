@@ -40,21 +40,6 @@ const userInfoHandler = async (
       .json({ msg: 'Invalid token.' })
   }
 
-  const userTokenSnapshot = await db
-    .collection('app')
-    .doc(payload.iss)
-    .collection('user')
-    .doc(payload.userId)
-    .get()
-
-  const userToken = userTokenSnapshot.data()
-
-  if (userToken?.accessToken !== token) {
-    return res
-      .status(400)
-      .json({ msg: 'Invalid token.' })
-  }
-
   // get user data
   const userSnapshot = await db.collection('user').doc(payload.userId).get()
   const user = userSnapshot.data()?.user as any

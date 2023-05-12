@@ -1,10 +1,12 @@
 import { EToken } from '@/oauth/constants/token'
 import { IAuthorizationCode } from '@/oauth/interfaces/auth'
 import { IErrorReturn } from '@/oauth/interfaces/api'
+import { firestore } from 'firebase-admin'
 import { generateCommonToken, getPayloadFromToken } from '@/oauth/utils/auth'
 import admin, { db } from '@/oauth/lib/firebase'
 import fetch from 'node-fetch'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import FieldValue = firestore.FieldValue;
 
 export interface Data extends IAuthorizationCode {
   redirectUrl: string
@@ -47,6 +49,12 @@ const authorizationHandler = async (
         EToken.AUTH
       )
 
+      const userRef = await db.collection('user').doc(payload.userId)
+
+      userRef.update({
+        granted: FieldValue.arrayUnion(projectInfoSnapshot.ref),
+      })
+
       return res
         .status(200)
         .json({
@@ -54,6 +62,7 @@ const authorizationHandler = async (
           redirectUrl: projectInfo?.redirectUrl,
         })
     } catch (e) {
+      console.log(e)
       return res
         .status(403)
         .json({ msg: '授權錯誤' })
