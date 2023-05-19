@@ -1,0 +1,14 @@
+{
+  "name": "course-form-autocomplete",
+  "version": "1.0.0",
+  "dependencies": {
+    "dockerode": "^3.3.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.33.0"
+  },
+  "scripts": {
+    "start": "yarn playwright test"
+  }
+}

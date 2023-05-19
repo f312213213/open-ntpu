@@ -6,7 +6,8 @@
     "dashboard",
     "components",
     "docs",
-    "www"
+    "www",
+    "course-form-autocomplete"
   ],
   "private": true,
   "scripts": {
