@@ -4,13 +4,17 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dockerode": "^3.3.5",
-    "express": "^4.18.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.8.0",
+    "ts-node": "^10.9.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.33.0",
     "@types/cors": "^2.8.13"
   },
   "scripts": {
-    "start": "yarn playwright test"
+    "start-autocomplete": "yarn playwright test"
   }
 }
