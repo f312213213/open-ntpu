@@ -12,31 +12,6 @@ let db
 
 let fireConfig
 
-try {
-  fireConfig = {
-    type: process.env.ADMIN_TYPE,
-    project_id: process.env.ADMIN_PROJECT_ID,
-    private_key_id: process.env.ADMIN_PRIVATE_KEY_ID,
-    private_key: process.env.ADMIN_PRIVATE_KEY?.replace(/\\n/gm, '\n'),
-    client_email: process.env.ADMIN_CLIENT_EMAIL,
-    client_id: process.env.ADMIN_CLIENT_ID,
-    auth_uri: process.env.ADMIN_AUTH_URI,
-    token_uri: process.env.ADMIN_TOKEN_URI,
-    auth_provider_x509_cert_url: process.env.ADMIN_CERT_PROVIDER,
-    client_x509_cert_url: process.env.ADMIN_CERT_URL,
-  }
-  admin.initializeApp({
-    // @ts-ignore
-    credential: admin.credential.cert(fireConfig),
-  })
-
-  db = admin.firestore()
-} catch (error) {
-  if (!/already exists/u.test(error.message)) {
-    console.error('Firebase admin initialization error', error.stack)
-  }
-}
-
 const EStatus = {
   PENDING: 0,
   SUCCESS: 1,
@@ -135,5 +110,22 @@ app.post('/start-autocomplete', (req, res) => {
 })
 
 app.listen(3000, () => {
+  fireConfig = {
+    type: process.env.ADMIN_TYPE,
+    project_id: process.env.ADMIN_PROJECT_ID,
+    private_key_id: process.env.ADMIN_PRIVATE_KEY_ID,
+    private_key: process.env.ADMIN_PRIVATE_KEY?.replace(/\\n/gm, '\n'),
+    client_email: process.env.ADMIN_CLIENT_EMAIL,
+    client_id: process.env.ADMIN_CLIENT_ID,
+    auth_uri: process.env.ADMIN_AUTH_URI,
+    token_uri: process.env.ADMIN_TOKEN_URI,
+    auth_provider_x509_cert_url: process.env.ADMIN_CERT_PROVIDER,
+    client_x509_cert_url: process.env.ADMIN_CERT_URL,
+  }
+  admin.initializeApp({
+    // @ts-ignore
+    credential: admin.credential.cert(fireConfig),
+  })
+  db = admin.firestore()
   console.log('Server listening on port 3000')
 })
