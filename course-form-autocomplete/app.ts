@@ -1,7 +1,12 @@
 const express = require('express')
 const Docker = require('dockerode')
+const cors = require('cors')
 
 const app = express()
+
+app.use(cors({
+    origin: '*'
+}))
 
 app.use(express.json())
 
@@ -10,7 +15,8 @@ app.post('/start-autocomplete', (req, res) => {
     const {
       schoolId,
       password,
-    } = req.body
+      } = req.body
+    console.log(`Start handling request by: ${schoolId}`)
     const docker = new Docker()
 
     const containerOptions = {
@@ -24,10 +30,10 @@ app.post('/start-autocomplete', (req, res) => {
         const exitCode = data.StatusCode
         if (exitCode === 0) {
           res.status(200).send('Container exited successfully.')
-          console.log('Container exited successfully.')
+	  console.log(`Request by ${schoolId}'s container exited successfully.`)
         } else {
           res.status(400).send(`Container exited with non-zero status code: ${exitCode}`)
-          console.log(`Container exited with non-zero status code: ${exitCode}`)
+          console.log(`Request by ${schoolId}'s container exited with non-zero status code: ${exitCode}`)
         }
       })
       .catch(err => {
