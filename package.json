@@ -7,7 +7,8 @@
     "components",
     "docs",
     "www",
-    "course-form-autocomplete"
+    "course-form-autocomplete",
+    "course-form-autocomplete-web"
   ],
   "private": true,
   "scripts": {
