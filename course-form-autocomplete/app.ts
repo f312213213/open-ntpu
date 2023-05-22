@@ -51,13 +51,15 @@ app.use(express.json())
 
 app.get('/check-status/:id', (req, res) => {
   const containerId = req.params.id
-  console.log(containerId)
   db.collection('course-form-autocomplete').doc(containerId).get()
     .then(doc => {
       const data = doc.data()
+      const finished = data.status === EStatus.SUCCESS
+
+      if (finished) res.set('Cache-control', 'public, max-age=8640000')
 
       res.status(200).send({
-        finished: data.status === EStatus.SUCCESS,
+        finished,
       })
     })
 })
