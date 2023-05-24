@@ -18,6 +18,8 @@
     "typecheck": "turbo run typecheck"
   },
   "dependencies": {
+    "@radix-ui/react-alert-dialog": "^1.0.3",
+    "@radix-ui/react-dialog": "^1.0.3",
     "typescript": "5.0.4"
   },
   "devDependencies": {

@@ -24,7 +24,7 @@ app.use(cors({
 
 app.use(express.json())
 
-app.get('/check-status/:id', (req, res) => {
+app.get('/:id/check-status', (req, res) => {
   const containerId = req.params.id
   db.collection('course-form-autocomplete').doc(containerId).get()
     .then(doc => {
