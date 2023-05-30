@@ -68,7 +68,7 @@ export default function Home () {
       {
         loading && (
           <AlertDialog defaultOpen>
-            <AlertDialogContent className={'sm:max-w-[425px] bg-black'}>
+            <AlertDialogContent className={'sm:max-w-[425px] bg-black flex justify-center items-center'}>
               {
                 success
                   ? (
@@ -78,7 +78,7 @@ export default function Home () {
                     )
                   : (
                     <div className={'grid gap-4 py-4'}>
-                      Loading
+                      Loading...
                     </div>
                     )
               }

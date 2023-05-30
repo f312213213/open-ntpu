@@ -37,6 +37,11 @@ app.get('/:id/check-status', (req, res) => {
         finished,
       })
     })
+    .catch(e => {
+      res.status(404).send({
+        e: e.msg,
+      })
+    })
 })
 
 app.post('/finish-job', (req, res) => {
@@ -44,6 +49,9 @@ app.post('/finish-job', (req, res) => {
   console.log(`Request by ${schoolId}'s container ${containerId} finished successfully.`)
   db.collection('course-form-autocomplete').doc(containerId).set({
     status: EStatus.SUCCESS,
+  })
+  res.status(200).send({
+    finished: true,
   })
 })
 
