@@ -104,7 +104,7 @@ export default function Home () {
                 </Form.Message>
               </div>
               <Form.Control asChild>
-                <input className={'p-2 my-2 rounded'} type={'text'} required />
+                <input className={'p-2 my-2 rounded text-black'} type={'text'} required />
               </Form.Control>
             </Form.Field>
 
@@ -116,7 +116,7 @@ export default function Home () {
                 </Form.Message>
               </div>
               <Form.Control asChild>
-                <input className={'p-2 my-2 rounded'} type={'password'} required />
+                <input className={'p-2 my-2 rounded  text-black'} type={'password'} required />
               </Form.Control>
             </Form.Field>
 
@@ -124,7 +124,7 @@ export default function Home () {
               <div className={'w-full flex justify-center'}>
                 <Form.Submit asChild>
                   <Button className={'bg-white text-black hover:bg-gray-300 transform hover:scale-105 transition'}>
-                    登入
+                    開始！
                   </Button>
                 </Form.Submit>
               </div>
