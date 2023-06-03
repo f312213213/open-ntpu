@@ -21,13 +21,13 @@ Lets take a deep dive into it.
 
 ### 1. Register your app at our server.
 
-Go to `https://dash.oauth.ntpu.xyz/` to register your application in Open NTPU system.
+Go to `https://dash.oauth.ntpu.cc/` to register your application in Open NTPU system.
 
 After completion, you will get a set of token, including client id and client secret(keep client secret securely), you will need to use them in the following steps.
 
 ### 2. Your app send user to our login view.
 
-Send user to `https://oauth.ntpu.xyz/?clientId={your client id}`.
+Send user to `https://oauth.ntpu.cc/?clientId={your client id}`.
 
 ### 3. User confirm login and authorization your app.
 
@@ -53,7 +53,7 @@ An authorization code response:
 
 After you get the authorization code, you will need to exchange this authorization code to an access token at your own backend service within 15 minutes.
 
-To exchange an authorization code for an access token, call the https://oauth.ntpu.xyz/api/exchange endpoint and set the following parameters:
+To exchange an authorization code for an access token, call the https://oauth.ntpu.cc/api/exchange endpoint and set the following parameters:
 | Field             | Description                |
 |-------------------|----------------------------|
 | authorizationCode | The code get from response |
@@ -65,7 +65,7 @@ The following snippet shows a sample request:
 
 ```
 POST /api/exchange HTTP/1.1
-Host: oauth.ntpu.xyz
+Host: oauth.ntpu.cc
 Content-Type: application/json
 authorizationCode=ey....&
 client_id=your_client_id&
@@ -88,6 +88,6 @@ HTTP GET examples
 A call to the user info endpoint using the Authorization: Bearer HTTP header might look like the following. Note that you need to specify your own access token:
 ```
 GET /api/user/info HTTP/1.1
-Host: oauth.ntpu.xyz
+Host: oauth.ntpu.cc
 Authorization: Bearer accessToken
 ```
