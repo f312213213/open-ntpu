@@ -85,6 +85,7 @@ app.post('/start-autocomplete', (req, res) => {
         console.log(`Request by ${schoolId}'s container ${containerId} start successfully.`)
         db.collection('course-form-autocomplete').doc(containerId).set({
           status: EStatus.PENDING,
+          schoolId,
         })
           .then(() => {
             res.status(200).send({
