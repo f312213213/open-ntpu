@@ -47,7 +47,7 @@ app.get('/:id/check-status', (req, res) => {
 app.post('/finish-job', (req, res) => {
   const { containerId, schoolId } = req.body
   console.log(`Request by ${schoolId}'s container ${containerId} finished successfully.`)
-  db.collection('course-form-autocomplete').doc(containerId).set({
+  db.collection('course-form-autocomplete').doc(containerId).update({
     status: EStatus.SUCCESS,
   })
   res.status(200).send({
